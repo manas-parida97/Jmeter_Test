@@ -1,0 +1,1334 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jmeterTestPlan version="1.2" properties="5.0" jmeter="5.3">
+  <hashTree>
+    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="Query Store Inventory" enabled="true">
+      <stringProp name="TestPlan.comments"></stringProp>
+      <boolProp name="TestPlan.functional_mode">false</boolProp>
+      <boolProp name="TestPlan.serialize_threadgroups">true</boolProp>
+      <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+        <collectionProp name="Arguments.arguments"/>
+      </elementProp>
+      <stringProp name="TestPlan.user_define_classpath">C:\git\sterling\AEOExtensions\source\jar\ojdbc6.jar,C:\git\sterling\AEOExtensions\source\jar\mqclient\com.ibm.mq.defaultconfig.jar,C:\git\sterling\AEOExtensions\source\jar\mqclient\com.ibm.mq.headers.jar,C:\git\sterling\AEOExtensions\source\jar\mqclient\com.ibm.mq.jar,C:\git\sterling\AEOExtensions\source\jar\mqclient\com.ibm.mq.jmqi.jar,C:\git\sterling\AEOExtensions\source\jar\mqclient\com.ibm.mq.jms.Nojndi.jar,C:\git\sterling\AEOExtensions\source\jar\mqclient\com.ibm.mq.pcf.jar,C:\git\sterling\AEOExtensions\source\jar\mqclient\com.ibm.mq.postcard.jar,C:\git\sterling\AEOExtensions\source\jar\mqclient\com.ibm.mqbind.jar,C:\git\sterling\AEOExtensions\source\jar\mqclient\com.ibm.mqjms.jar,C:\git\sterling\AEOExtensions\source\jar\mqclient\connector.jar,C:\git\sterling\AEOExtensions\source\jar\mqclient\dhbcore.jar,C:\git\sterling\AEOExtensions\source\jar\mqclient\fscontext.jar,C:\git\sterling\AEOExtensions\source\jar\mqclient\jms.jar,C:\git\sterling\AEOExtensions\source\jar\mqclient\jta.jar,C:\git\sterling\AEOExtensions\source\jar\mqclient\providerutil.jar</stringProp>
+    </TestPlan>
+    <hashTree>
+      <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="Environment Properties" enabled="true">
+        <collectionProp name="Arguments.arguments">
+          <elementProp name="NodeHost" elementType="Argument">
+            <stringProp name="Argument.name">NodeHost</stringProp>
+            <stringProp name="Argument.value">inventory-node-availability-service-perf.apps.gcp-prod.ae-cf.io</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="GroupHost" elementType="Argument">
+            <stringProp name="Argument.name">GroupHost</stringProp>
+            <stringProp name="Argument.value">inventory-group-availability-service-perf.apps.gcp-prod.ae-cf.io</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="InvHost" elementType="Argument">
+            <stringProp name="Argument.name">InvHost</stringProp>
+            <stringProp name="Argument.value">inventory-availability-service-perf.apps.gcp-prod.ae-cf.io</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="NodeGKEHost" elementType="Argument">
+            <stringProp name="Argument.name">NodeGKEHost</stringProp>
+            <stringProp name="Argument.value">inventory-node-availability-service-perf.int-perf.ae-gcp.io</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="GroupGKEHost" elementType="Argument">
+            <stringProp name="Argument.name">GroupGKEHost</stringProp>
+            <stringProp name="Argument.value">inventory-group-availability-service-perf.int-perf.ae-gcp.io</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="InvGKEHost" elementType="Argument">
+            <stringProp name="Argument.name">InvGKEHost</stringProp>
+            <stringProp name="Argument.value">inventory-availability-service-perf.int-perf.ae-gcp.io</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="APISGHost" elementType="Argument">
+            <stringProp name="Argument.name">APISGHost</stringProp>
+            <stringProp name="Argument.value">perf-apisg.ae.com</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+        </collectionProp>
+      </Arguments>
+      <hashTree/>
+      <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="StoreId" enabled="true">
+        <stringProp name="filename">StoreId.dat</stringProp>
+        <stringProp name="fileEncoding"></stringProp>
+        <stringProp name="variableNames">StoreId</stringProp>
+        <boolProp name="ignoreFirstLine">true</boolProp>
+        <stringProp name="delimiter">,</stringProp>
+        <boolProp name="quotedData">false</boolProp>
+        <boolProp name="recycle">true</boolProp>
+        <boolProp name="stopThread">false</boolProp>
+        <stringProp name="shareMode">shareMode.all</stringProp>
+      </CSVDataSet>
+      <hashTree/>
+      <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="SkuIds" enabled="true">
+        <stringProp name="filename">UniqueSKUPERF.dat</stringProp>
+        <stringProp name="fileEncoding"></stringProp>
+        <stringProp name="variableNames">SKUId</stringProp>
+        <boolProp name="ignoreFirstLine">true</boolProp>
+        <stringProp name="delimiter">,</stringProp>
+        <boolProp name="quotedData">false</boolProp>
+        <boolProp name="recycle">true</boolProp>
+        <boolProp name="stopThread">false</boolProp>
+        <stringProp name="shareMode">shareMode.all</stringProp>
+      </CSVDataSet>
+      <hashTree/>
+      <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Zipcode" enabled="true">
+        <stringProp name="filename">ZipcodePerf.dat</stringProp>
+        <stringProp name="fileEncoding"></stringProp>
+        <stringProp name="variableNames">Zipcode</stringProp>
+        <boolProp name="ignoreFirstLine">true</boolProp>
+        <stringProp name="delimiter">,</stringProp>
+        <boolProp name="quotedData">false</boolProp>
+        <boolProp name="recycle">true</boolProp>
+        <boolProp name="stopThread">false</boolProp>
+        <stringProp name="shareMode">shareMode.all</stringProp>
+      </CSVDataSet>
+      <hashTree/>
+      <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="LatLon" enabled="true">
+        <stringProp name="filename">Coordinates.dat</stringProp>
+        <stringProp name="fileEncoding"></stringProp>
+        <stringProp name="variableNames">LatLon</stringProp>
+        <boolProp name="ignoreFirstLine">true</boolProp>
+        <stringProp name="delimiter">|</stringProp>
+        <boolProp name="quotedData">false</boolProp>
+        <boolProp name="recycle">true</boolProp>
+        <boolProp name="stopThread">false</boolProp>
+        <stringProp name="shareMode">shareMode.all</stringProp>
+      </CSVDataSet>
+      <hashTree/>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="NodeAvailabilityCall" enabled="false">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <intProp name="LoopController.loops">-1</intProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">25</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <longProp name="ThreadGroup.start_time">1376081381000</longProp>
+        <longProp name="ThreadGroup.end_time">1376081381000</longProp>
+        <boolProp name="ThreadGroup.scheduler">true</boolProp>
+        <stringProp name="ThreadGroup.duration">3600</stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
+      </ThreadGroup>
+      <hashTree>
+        <OnceOnlyController guiclass="OnceOnlyControllerGui" testclass="OnceOnlyController" testname="Once Only Controller" enabled="true"/>
+        <hashTree>
+          <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="ReadItemId File" enabled="true">
+            <stringProp name="BeanShellSampler.query">import java.io.BufferedReader;
+import java.io.FileReader;
+import java.util.ArrayList;
+
+System.out.println(&quot;Read Items Start&quot;);
+BufferedReader br = new BufferedReader(new FileReader(&quot;UniqueSKUPERF.dat&quot;));
+
+String item = null;
+
+ArrayList itemlist = new ArrayList();
+while ((item = br.readLine()) != null) {
+	itemlist.add(item);
+}
+br.close();
+props.put(&quot;ItemIdVal&quot;,itemlist);
+System.out.println(&quot;Read Items End&quot;);
+
+
+System.out.println(&quot;Read Stores Start&quot;);
+BufferedReader br1 = new BufferedReader(new FileReader(&quot;StoreId.dat&quot;));
+
+String store = null;
+
+ArrayList storelist = new ArrayList();
+while ((store = br1.readLine()) != null) {
+	storelist.add(store);
+}
+br1.close();
+props.put(&quot;StoreIdVal&quot;,storelist);
+System.out.println(&quot;Read Stores End&quot;);</stringProp>
+            <stringProp name="BeanShellSampler.filename"></stringProp>
+            <stringProp name="BeanShellSampler.parameters"></stringProp>
+            <boolProp name="BeanShellSampler.resetInterpreter">false</boolProp>
+          </BeanShellSampler>
+          <hashTree/>
+        </hashTree>
+        <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="Node BeanShell" enabled="true">
+          <stringProp name="BeanShellSampler.query">String promiseLines = &quot;&quot;;
+String promiseLine = &quot;&quot;;
+String StoreLines = &quot;&quot;;
+String StoreLine = &quot;&quot;;
+
+Random ran = new Random(); 
+
+int k = ${__Random(1,100)};
+
+int itemKey = ${__Random(1,9000)};
+itemKey = itemKey - 1;
+ArrayList itemlist = (ArrayList) props.get(&quot;ItemIdVal&quot;);
+
+int storeloop = ${__Random(1,20)};
+int storeKey = ${__Random(1,500)};
+storeKey = storeKey - 1;
+ArrayList storelist = (ArrayList) props.get(&quot;StoreIdVal&quot;);
+
+int i,j;
+int ItemCount1;
+
+if(k &gt;= 1 &amp;&amp; k &lt;= 10)
+	ItemCount1 = 1;
+else if(k &gt;= 11 &amp;&amp; k &lt;= 22)
+	ItemCount1 = 2;
+else if(k &gt;= 23 &amp;&amp; k &lt;= 34)
+	ItemCount1 = 3;
+else if(k &gt;= 35 &amp;&amp; k &lt;= 49)
+	ItemCount1 = 4;
+else if(k &gt;= 50 &amp;&amp; k &lt;= 79)
+	ItemCount1 = 5;
+else if(k &gt;= 80 &amp;&amp; k &lt;= 87)
+	ItemCount1 = 6;
+else if(k &gt;= 88 &amp;&amp; k &lt;= 93)
+	ItemCount1 = 7;
+else if(k &gt;= 94 &amp;&amp; k &lt;= 95)
+	ItemCount1 = 8;
+else if(k &gt;= 96 &amp;&amp; k &lt;= 97)
+	ItemCount1 = 9;
+else if(k &gt;= 98)
+	ItemCount1 = 10;
+
+ if ( itemKey &lt; ItemCount1)
+ 	itemKey = ItemCount1;
+ 	
+for(i=1; i&lt;=ItemCount1; i++)
+{	
+	
+	String itemId = itemlist.get(itemKey-i);
+
+	if ( i == ItemCount1)
+		promiseLine =&quot;&quot;+itemId+&quot;&quot;;
+	else
+		promiseLine =&quot;&quot;+itemId+&quot;,&quot;;
+	
+	promiseLines=promiseLines+promiseLine;
+}
+
+ if ( storeKey &lt; storeloop)
+ 	storeKey = storeloop;
+
+for(j=1; j&lt;=storeloop; j++)
+{	
+	
+	String storesId = storelist.get(storeKey-j);
+
+	if ( j == storeloop)
+		StoreLine =&quot;&quot;+storesId+&quot;&quot;;
+	else
+		StoreLine =&quot;&quot;+storesId+&quot;,&quot;;
+	
+	StoreLines=StoreLines+StoreLine;
+}
+
+
+
+vars.put(&quot;PROMISE_LINES&quot;,promiseLines);
+vars.put(&quot;Store_LINES&quot;,StoreLines);
+</stringProp>
+          <stringProp name="BeanShellSampler.filename"></stringProp>
+          <stringProp name="BeanShellSampler.parameters"></stringProp>
+          <boolProp name="BeanShellSampler.resetInterpreter">false</boolProp>
+        </BeanShellSampler>
+        <hashTree/>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Node Availability" enabled="true">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">${NodeGKEHost}</stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol">https</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/v1/locationInventory?skus=${PROMISE_LINES}&amp;locations=${Store_LINES}</stringProp>
+          <stringProp name="HTTPSampler.method">GET</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree/>
+      </hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="GroupAvailabilityCall" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <intProp name="LoopController.loops">-1</intProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">18</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <longProp name="ThreadGroup.start_time">1376081381000</longProp>
+        <longProp name="ThreadGroup.end_time">1376081381000</longProp>
+        <boolProp name="ThreadGroup.scheduler">true</boolProp>
+        <stringProp name="ThreadGroup.duration">3600</stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
+      </ThreadGroup>
+      <hashTree>
+        <OnceOnlyController guiclass="OnceOnlyControllerGui" testclass="OnceOnlyController" testname="Once Only Controller" enabled="true"/>
+        <hashTree>
+          <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="ReadItemId File" enabled="true">
+            <stringProp name="BeanShellSampler.query">import java.io.BufferedReader;
+import java.io.FileReader;
+import java.util.ArrayList;
+
+System.out.println(&quot;Read Items Start&quot;);
+BufferedReader br = new BufferedReader(new FileReader(&quot;UniqueSKUPERF.dat&quot;));
+
+String item = null;
+
+ArrayList itemlist = new ArrayList();
+while ((item = br.readLine()) != null) {
+	itemlist.add(item);
+}
+br.close();
+props.put(&quot;SKUIdVal&quot;,itemlist);
+System.out.println(&quot;Read Items End&quot;);
+</stringProp>
+            <stringProp name="BeanShellSampler.filename"></stringProp>
+            <stringProp name="BeanShellSampler.parameters"></stringProp>
+            <boolProp name="BeanShellSampler.resetInterpreter">false</boolProp>
+          </BeanShellSampler>
+          <hashTree/>
+        </hashTree>
+        <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="Group BeanShell" enabled="true">
+          <stringProp name="BeanShellSampler.query">import java.util.ArrayList;
+
+String promiseLines = &quot;&quot;;
+String promiseLine = &quot;&quot;;
+Random ran = new Random();
+
+int k = ${__Random(1,100)};
+int itemKey = ${__Random(1,9930)};
+itemKey = itemKey - 1;
+ArrayList itemlist = (ArrayList) props.get(&quot;SKUIdVal&quot;);
+
+int i;
+int ItemCount1;
+
+if(k &gt;= 1 &amp;&amp; k &lt;= 10)
+	ItemCount1 = 1;
+else if(k &gt;= 11 &amp;&amp; k &lt;= 22)
+	ItemCount1 = 2;
+else if(k &gt;= 23 &amp;&amp; k &lt;= 34)
+	ItemCount1 = 3;
+else if(k &gt;= 35 &amp;&amp; k &lt;= 49)
+	ItemCount1 = 4;
+else if(k &gt;= 50 &amp;&amp; k &lt;= 79)
+	ItemCount1 = 5;
+else if(k &gt;= 80 &amp;&amp; k &lt;= 87)
+	ItemCount1 = 6;
+else if(k &gt;= 88 &amp;&amp; k &lt;= 93)
+	ItemCount1 = 7;
+else if(k &gt;= 94 &amp;&amp; k &lt;= 95)
+	ItemCount1 = 8;
+else if(k &gt;= 96 &amp;&amp; k &lt;= 97)
+	ItemCount1 = 9;
+else if(k &gt;= 98)
+	ItemCount1 = 10;
+
+
+if (itemKey&lt;ItemCount1)
+	itemKey=ItemCount1;
+
+for(i=1; i&lt;=ItemCount1; i++)
+{	
+	String itemId = itemlist.get(itemKey-i);
+	
+    	if ( i == ItemCount1)
+		promiseLine =&quot;&quot;+itemId+&quot;&quot;;
+	else
+		promiseLine =&quot;&quot;+itemId+&quot;,&quot;;
+	
+	promiseLines=promiseLines+promiseLine;
+	
+}
+
+vars.put(&quot;PROMISE_LINES&quot;,promiseLines);
+</stringProp>
+          <stringProp name="BeanShellSampler.filename"></stringProp>
+          <stringProp name="BeanShellSampler.parameters"></stringProp>
+          <boolProp name="BeanShellSampler.resetInterpreter">false</boolProp>
+        </BeanShellSampler>
+        <hashTree/>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Group Availability" enabled="true">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">${GroupGKEHost}</stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol">https</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/v1/groupInventory?skus=${PROMISE_LINES}&amp;groupType=DC&amp;site=US</stringProp>
+          <stringProp name="HTTPSampler.method">GET</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree/>
+      </hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Direct_InventoryAvailabilityCall" enabled="false">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <intProp name="LoopController.loops">-1</intProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">50</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <longProp name="ThreadGroup.start_time">1376081381000</longProp>
+        <longProp name="ThreadGroup.end_time">1376081381000</longProp>
+        <boolProp name="ThreadGroup.scheduler">true</boolProp>
+        <stringProp name="ThreadGroup.duration">3600</stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
+      </ThreadGroup>
+      <hashTree>
+        <OnceOnlyController guiclass="OnceOnlyControllerGui" testclass="OnceOnlyController" testname="Once Only Controller" enabled="true"/>
+        <hashTree>
+          <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="ReadItemId File" enabled="true">
+            <stringProp name="BeanShellSampler.query">import java.io.BufferedReader;
+import java.io.FileReader;
+import java.util.ArrayList;
+
+System.out.println(&quot;Read Items Start&quot;);
+BufferedReader br = new BufferedReader(new FileReader(&quot;UniqueSKUPERF.dat&quot;));
+
+String item = null;
+
+ArrayList itemlist = new ArrayList();
+while ((item = br.readLine()) != null) {
+	itemlist.add(item);
+}
+br.close();
+props.put(&quot;SKUIdVal&quot;,itemlist);
+System.out.println(&quot;Read Items End&quot;);
+
+System.out.println(&quot;Read Stores Start&quot;);
+BufferedReader br1 = new BufferedReader(new FileReader(&quot;StoreId.dat&quot;));
+
+String store = null;
+
+ArrayList storelist = new ArrayList();
+while ((store = br1.readLine()) != null) {
+	storelist.add(store);
+}
+br1.close();
+props.put(&quot;StoreIdVal&quot;,storelist);
+System.out.println(&quot;Read Stores End&quot;);
+
+System.out.println(&quot;Read LatLon Start&quot;);
+BufferedReader br2 = new BufferedReader(new FileReader(&quot;Coordinates.dat&quot;));
+
+String latlon = null;
+
+ArrayList latlonlist = new ArrayList();
+while ((latlon = br2.readLine()) != null) {
+	latlonlist.add(latlon);
+}
+br2.close();
+props.put(&quot;latlonVal&quot;,latlonlist);
+System.out.println(&quot;Read LatLon End&quot;);
+</stringProp>
+            <stringProp name="BeanShellSampler.filename"></stringProp>
+            <stringProp name="BeanShellSampler.parameters"></stringProp>
+            <boolProp name="BeanShellSampler.resetInterpreter">false</boolProp>
+          </BeanShellSampler>
+          <hashTree/>
+        </hashTree>
+        <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="Inv BeanShell" enabled="true">
+          <stringProp name="BeanShellSampler.query">import java.util.ArrayList;
+
+String promiseLines = &quot;&quot;;
+String promiseLine = &quot;&quot;;
+String StoreLines = &quot;&quot;;
+String StoreLine = &quot;&quot;;
+String LatLonLines = &quot;&quot;;
+String LatLonLine = &quot;&quot;;
+
+Random ran = new Random(); 
+
+int k = ${__Random(1,100)};
+int itemKey = ${__Random(1,9930)};
+itemKey = itemKey - 1;
+ArrayList itemlist = (ArrayList) props.get(&quot;SKUIdVal&quot;);
+
+int storeloop = ${__Random(1,20)};
+int storeKey = ${__Random(1,850)};
+storeKey = storeKey - 1;
+ArrayList storelist = (ArrayList) props.get(&quot;StoreIdVal&quot;);
+
+int latlonKey = ${__Random(1,850)};
+latlonKey = latlonKey - 1;
+ArrayList latlonlist = (ArrayList) props.get(&quot;latlonVal&quot;);
+
+int InvPer = ${__Random(1,100)};
+//InvPer = 99;
+vars.put(&quot;InvPerVar&quot;, String.valueOf(InvPer));
+
+int i,j;
+int ItemCount1;
+
+
+if(k &gt;= 1 &amp;&amp; k &lt;= 10)
+	ItemCount1 = 1;
+else if(k &gt;= 11 &amp;&amp; k &lt;= 22)
+	ItemCount1 = 2;
+else if(k &gt;= 23 &amp;&amp; k &lt;= 34)
+	ItemCount1 = 3;
+else if(k &gt;= 35 &amp;&amp; k &lt;= 49)
+	ItemCount1 = 4;
+else if(k &gt;= 50 &amp;&amp; k &lt;= 79)
+	ItemCount1 = 5;
+else if(k &gt;= 80 &amp;&amp; k &lt;= 87)
+	ItemCount1 = 6;
+else if(k &gt;= 88 &amp;&amp; k &lt;= 93)
+	ItemCount1 = 7;
+else if(k &gt;= 94 &amp;&amp; k &lt;= 95)
+	ItemCount1 = 8;
+else if(k &gt;= 96 &amp;&amp; k &lt;= 97)
+	ItemCount1 = 9;
+else if(k &gt;= 98)
+	ItemCount1 = 10;
+
+if (itemKey&lt;ItemCount1)
+	itemKey=ItemCount1;
+	
+for(i=1; i&lt;=ItemCount1; i++)
+{	
+	
+	String itemId = itemlist.get(itemKey-i);
+
+	if ( i == ItemCount1)
+		promiseLine =&quot;&quot;+itemId+&quot;&quot;;
+	else
+		promiseLine =&quot;&quot;+itemId+&quot;,&quot;;
+	
+	promiseLines=promiseLines+promiseLine;
+}
+
+ if ( storeKey &lt; storeloop)
+ 	storeKey = storeloop;
+
+if ( latlonKey &lt; storeloop)
+ 	latlonKey = storeloop;
+ 	
+for(j=1; j&lt;=storeloop; j++)
+{	
+	
+	String storesId = storelist.get(storeKey-j);
+	String latlonId = latlonlist.get(latlonKey-j);
+
+	if ( j == storeloop)
+	{
+		StoreLine =&quot;&quot;+storesId+&quot;&quot;;
+		LatLonLine =&quot;&quot;+latlonId+&quot;&quot;;
+	}
+	else
+	{
+		StoreLine =&quot;&quot;+storesId+&quot;,&quot;;
+		LatLonLine =&quot;&quot;+latlonId+&quot;&quot;;
+	}
+	
+	StoreLines=StoreLines+StoreLine;
+	LatLonLines=LatLonLines+LatLonLine;
+}
+
+vars.put(&quot;PROMISE_LINES&quot;,promiseLines);
+vars.put(&quot;Store_LINES&quot;,StoreLines);
+vars.put(&quot;LatLon_LINES&quot;,LatLonLines);
+
+</stringProp>
+          <stringProp name="BeanShellSampler.filename"></stringProp>
+          <stringProp name="BeanShellSampler.parameters"></stringProp>
+          <boolProp name="BeanShellSampler.resetInterpreter">false</boolProp>
+        </BeanShellSampler>
+        <hashTree/>
+        <IfController guiclass="IfControllerPanel" testclass="IfController" testname="If Controller SingleStore_SingleSKU" enabled="true">
+          <stringProp name="IfController.condition">${InvPerVar} &lt;= 30</stringProp>
+          <boolProp name="IfController.evaluateAll">false</boolProp>
+        </IfController>
+        <hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Inv Availability From Zip" enabled="true">
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+              <collectionProp name="Arguments.arguments"/>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">${InvGKEHost}</stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">/v1/availability?country=US&amp;location=${Zipcode}&amp;skus=${SKUId}</stringProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree/>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Inv Availability From Coordinates" enabled="false">
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+              <collectionProp name="Arguments.arguments"/>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">${InvGKEHost}</stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">/v1/availability?country=US&amp;location=${LatLon}&amp;skus=${SKUId}</stringProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree/>
+        </hashTree>
+        <IfController guiclass="IfControllerPanel" testclass="IfController" testname="If Controller StoreList_SingleSKU" enabled="true">
+          <stringProp name="IfController.condition">${InvPerVar} &gt; 30 &amp;&amp; ${InvPerVar} &lt;= 80</stringProp>
+          <boolProp name="IfController.evaluateAll">false</boolProp>
+        </IfController>
+        <hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Inv Availability From Storelist" enabled="true">
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+              <collectionProp name="Arguments.arguments"/>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">${InvGKEHost}</stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">/v1/availability?country=US&amp;store=${Store_LINES}&amp;skus=${SKUId}</stringProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree/>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Inv Availability From Coordinateslist" enabled="false">
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+              <collectionProp name="Arguments.arguments"/>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">${InvGKEHost}</stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">/v1/availability?country=US&amp;store=${LatLon_LINES}&amp;skus=${SKUId}</stringProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree/>
+        </hashTree>
+        <IfController guiclass="IfControllerPanel" testclass="IfController" testname="If Controller SingleStore_SKUList" enabled="true">
+          <stringProp name="IfController.condition">${InvPerVar} &gt; 80 &amp;&amp; ${InvPerVar} &lt;= 90</stringProp>
+          <boolProp name="IfController.evaluateAll">false</boolProp>
+        </IfController>
+        <hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Inv Availability From Zip and Skulist" enabled="true">
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+              <collectionProp name="Arguments.arguments"/>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">${InvGKEHost}</stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">/v1/availability?country=US&amp;location=${Zipcode}&amp;skus=${PROMISE_LINES}</stringProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree/>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Inv Availability From Coordinates and Multiplesku" enabled="false">
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+              <collectionProp name="Arguments.arguments"/>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">${InvGKEHost}</stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">/v1/availability?country=US&amp;location=${LatLon}&amp;skus=${PROMISE_LINES}</stringProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree/>
+        </hashTree>
+        <IfController guiclass="IfControllerPanel" testclass="IfController" testname="If Controller StoreList_SKUList" enabled="true">
+          <stringProp name="IfController.condition">${InvPerVar} &gt; 90</stringProp>
+          <boolProp name="IfController.evaluateAll">false</boolProp>
+        </IfController>
+        <hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Inv Availability From storelist and skulsit" enabled="true">
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+              <collectionProp name="Arguments.arguments"/>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">${InvGKEHost}</stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">/v1/availability?country=US&amp;store=${Store_LINES}&amp;skus=${PROMISE_LINES}</stringProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree/>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Inv Availability From Coordinateslist and Skulist" enabled="false">
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+              <collectionProp name="Arguments.arguments"/>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">${InvGKEHost}</stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">/v1/availability?country=US&amp;location=${LatLon_LINES}&amp;skus=${PROMISE_LINES}</stringProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree/>
+        </hashTree>
+      </hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="APISG_InventoryAvailabilityCall" enabled="false">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <intProp name="LoopController.loops">-1</intProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">50</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <longProp name="ThreadGroup.start_time">1376081381000</longProp>
+        <longProp name="ThreadGroup.end_time">1376081381000</longProp>
+        <boolProp name="ThreadGroup.scheduler">true</boolProp>
+        <stringProp name="ThreadGroup.duration">1800</stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
+      </ThreadGroup>
+      <hashTree>
+        <OnceOnlyController guiclass="OnceOnlyControllerGui" testclass="OnceOnlyController" testname="Once Only Controller" enabled="true"/>
+        <hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Generate Access Token" enabled="true">
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">grant_type=client_credentials</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">${APISGHost}</stringProp>
+            <stringProp name="HTTPSampler.port">443</stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">/auth/oauth/v3/token</stringProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <boolProp name="HTTPSampler.BROWSER_COMPATIBLE_MULTIPART">true</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="" elementType="Header">
+                  <stringProp name="Header.name">Authorization</stringProp>
+                  <stringProp name="Header.value">Basic  MTA5ODU2NzQzMjplZDc4OWFjNzM0YWExMjBm</stringProp>
+                </elementProp>
+                <elementProp name="" elementType="Header">
+                  <stringProp name="Header.name">Content-Type</stringProp>
+                  <stringProp name="Header.value">application/x-www-form-urlencoded</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree/>
+            <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="JSON Extractor" enabled="true">
+              <stringProp name="JSONPostProcessor.referenceNames">accessToken</stringProp>
+              <stringProp name="JSONPostProcessor.jsonPathExprs">$.access_token</stringProp>
+              <stringProp name="JSONPostProcessor.match_numbers"></stringProp>
+              <stringProp name="JSONPostProcessor.defaultValues">${accessToken}</stringProp>
+            </JSONPostProcessor>
+            <hashTree/>
+          </hashTree>
+          <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="ReadItemId File" enabled="true">
+            <stringProp name="BeanShellSampler.query">import java.io.BufferedReader;
+import java.io.FileReader;
+import java.util.ArrayList;
+
+System.out.println(&quot;Read Items Start&quot;);
+BufferedReader br = new BufferedReader(new FileReader(&quot;UniqueSKUPERF.dat&quot;));
+
+String item = null;
+
+ArrayList itemlist = new ArrayList();
+while ((item = br.readLine()) != null) {
+	itemlist.add(item);
+}
+br.close();
+props.put(&quot;SKUIdVal&quot;,itemlist);
+System.out.println(&quot;Read Items End&quot;);
+
+System.out.println(&quot;Read Stores Start&quot;);
+BufferedReader br1 = new BufferedReader(new FileReader(&quot;StoreId.dat&quot;));
+
+String store = null;
+
+ArrayList storelist = new ArrayList();
+while ((store = br1.readLine()) != null) {
+	storelist.add(store);
+}
+br1.close();
+props.put(&quot;StoreIdVal&quot;,storelist);
+System.out.println(&quot;Read Stores End&quot;);
+
+System.out.println(&quot;Read LatLon Start&quot;);
+BufferedReader br2 = new BufferedReader(new FileReader(&quot;Coordinates.dat&quot;));
+
+String latlon = null;
+
+ArrayList latlonlist = new ArrayList();
+while ((latlon = br2.readLine()) != null) {
+	latlonlist.add(latlon);
+}
+br2.close();
+props.put(&quot;latlonVal&quot;,latlonlist);
+System.out.println(&quot;Read LatLon End&quot;);
+</stringProp>
+            <stringProp name="BeanShellSampler.filename"></stringProp>
+            <stringProp name="BeanShellSampler.parameters"></stringProp>
+            <boolProp name="BeanShellSampler.resetInterpreter">false</boolProp>
+          </BeanShellSampler>
+          <hashTree/>
+        </hashTree>
+        <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="Inv BeanShell" enabled="true">
+          <stringProp name="BeanShellSampler.query">import java.util.ArrayList;
+
+String promiseLines = &quot;&quot;;
+String promiseLine = &quot;&quot;;
+String StoreLines = &quot;&quot;;
+String StoreLine = &quot;&quot;;
+String LatLonLines = &quot;&quot;;
+String LatLonLine = &quot;&quot;;
+
+Random ran = new Random(); 
+
+int k = ${__Random(1,100)};
+int itemKey = ${__Random(1,9930)};
+itemKey = itemKey - 1;
+ArrayList itemlist = (ArrayList) props.get(&quot;SKUIdVal&quot;);
+
+int storeloop = ${__Random(1,20)};
+int storeKey = ${__Random(1,850)};
+storeKey = storeKey - 1;
+ArrayList storelist = (ArrayList) props.get(&quot;StoreIdVal&quot;);
+
+int latlonKey = ${__Random(1,850)};
+latlonKey = latlonKey - 1;
+ArrayList latlonlist = (ArrayList) props.get(&quot;latlonVal&quot;);
+
+int InvPer = ${__Random(1,100)};
+//InvPer = 99;
+vars.put(&quot;InvPerVar&quot;, String.valueOf(InvPer));
+
+int i,j;
+int ItemCount1;
+
+
+if(k &gt;= 1 &amp;&amp; k &lt;= 10)
+	ItemCount1 = 1;
+else if(k &gt;= 11 &amp;&amp; k &lt;= 22)
+	ItemCount1 = 2;
+else if(k &gt;= 23 &amp;&amp; k &lt;= 34)
+	ItemCount1 = 3;
+else if(k &gt;= 35 &amp;&amp; k &lt;= 49)
+	ItemCount1 = 4;
+else if(k &gt;= 50 &amp;&amp; k &lt;= 79)
+	ItemCount1 = 5;
+else if(k &gt;= 80 &amp;&amp; k &lt;= 87)
+	ItemCount1 = 6;
+else if(k &gt;= 88 &amp;&amp; k &lt;= 93)
+	ItemCount1 = 7;
+else if(k &gt;= 94 &amp;&amp; k &lt;= 95)
+	ItemCount1 = 8;
+else if(k &gt;= 96 &amp;&amp; k &lt;= 97)
+	ItemCount1 = 9;
+else if(k &gt;= 98)
+	ItemCount1 = 10;
+
+if (itemKey&lt;ItemCount1)
+	itemKey=ItemCount1;
+	
+for(i=1; i&lt;=ItemCount1; i++)
+{	
+	
+	String itemId = itemlist.get(itemKey-i);
+
+	if ( i == ItemCount1)
+		promiseLine =&quot;&quot;+itemId+&quot;&quot;;
+	else
+		promiseLine =&quot;&quot;+itemId+&quot;,&quot;;
+	
+	promiseLines=promiseLines+promiseLine;
+}
+
+ if ( storeKey &lt; storeloop)
+ 	storeKey = storeloop;
+
+if ( latlonKey &lt; storeloop)
+ 	latlonKey = storeloop;
+ 	
+for(j=1; j&lt;=storeloop; j++)
+{	
+	
+	String storesId = storelist.get(storeKey-j);
+	String latlonId = latlonlist.get(latlonKey-j);
+
+	if ( j == storeloop)
+	{
+		StoreLine =&quot;&quot;+storesId+&quot;&quot;;
+		LatLonLine =&quot;&quot;+latlonId+&quot;&quot;;
+	}
+	else
+	{
+		StoreLine =&quot;&quot;+storesId+&quot;,&quot;;
+		LatLonLine =&quot;&quot;+latlonId+&quot;&quot;;
+	}
+	
+	StoreLines=StoreLines+StoreLine;
+	LatLonLines=LatLonLines+LatLonLine;
+}
+
+vars.put(&quot;PROMISE_LINES&quot;,promiseLines);
+vars.put(&quot;Store_LINES&quot;,StoreLines);
+vars.put(&quot;LatLon_LINES&quot;,LatLonLines);
+
+</stringProp>
+          <stringProp name="BeanShellSampler.filename"></stringProp>
+          <stringProp name="BeanShellSampler.parameters"></stringProp>
+          <boolProp name="BeanShellSampler.resetInterpreter">false</boolProp>
+        </BeanShellSampler>
+        <hashTree/>
+        <IfController guiclass="IfControllerPanel" testclass="IfController" testname="If Controller SingleStore_SingleSKU" enabled="true">
+          <stringProp name="IfController.condition">${InvPerVar} &lt;= 30</stringProp>
+          <boolProp name="IfController.evaluateAll">false</boolProp>
+        </IfController>
+        <hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Inv Availability From Zip" enabled="true">
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+              <collectionProp name="Arguments.arguments"/>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">${APISGHost}</stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">/inventory/v1/availability?country=US&amp;location=${Zipcode}&amp;skus=${SKUId}</stringProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree/>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Content-Type</stringProp>
+                <stringProp name="Header.value">application/json</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Accept</stringProp>
+                <stringProp name="Header.value">application/json</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">x-access-token</stringProp>
+                <stringProp name="Header.value">${accessToken}</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Inv Availability From Coordinates" enabled="false">
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+              <collectionProp name="Arguments.arguments"/>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">${InvGKEHost}</stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">/v1/availability?country=US&amp;location=${LatLon}&amp;skus=${SKUId}</stringProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree/>
+        </hashTree>
+        <IfController guiclass="IfControllerPanel" testclass="IfController" testname="If Controller StoreList_SingleSKU" enabled="true">
+          <stringProp name="IfController.condition">${InvPerVar} &gt; 30 &amp;&amp; ${InvPerVar} &lt;= 80</stringProp>
+          <boolProp name="IfController.evaluateAll">false</boolProp>
+        </IfController>
+        <hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Inv Availability From Storelist" enabled="true">
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+              <collectionProp name="Arguments.arguments"/>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">${APISGHost}</stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">/inventory/v1/availability?country=US&amp;store=${Store_LINES}&amp;skus=${SKUId}</stringProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree/>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Content-Type</stringProp>
+                <stringProp name="Header.value">application/json</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Accept</stringProp>
+                <stringProp name="Header.value">application/json</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">x-access-token</stringProp>
+                <stringProp name="Header.value">${accessToken}</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Inv Availability From Coordinateslist" enabled="false">
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+              <collectionProp name="Arguments.arguments"/>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">${InvGKEHost}</stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">/v1/availability?country=US&amp;store=${LatLon_LINES}&amp;skus=${SKUId}</stringProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree/>
+        </hashTree>
+        <IfController guiclass="IfControllerPanel" testclass="IfController" testname="If Controller SingleStore_SKUList" enabled="true">
+          <stringProp name="IfController.condition">${InvPerVar} &gt; 80 &amp;&amp; ${InvPerVar} &lt;= 90</stringProp>
+          <boolProp name="IfController.evaluateAll">false</boolProp>
+        </IfController>
+        <hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Inv Availability From Zip and Skulist" enabled="true">
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+              <collectionProp name="Arguments.arguments"/>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">${APISGHost}</stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">/inventory/v1/availability?country=US&amp;location=${Zipcode}&amp;skus=${PROMISE_LINES}</stringProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree/>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Content-Type</stringProp>
+                <stringProp name="Header.value">application/json</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Accept</stringProp>
+                <stringProp name="Header.value">application/json</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">x-access-token</stringProp>
+                <stringProp name="Header.value">${accessToken}</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Inv Availability From Coordinates and Multiplesku" enabled="false">
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+              <collectionProp name="Arguments.arguments"/>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">${InvGKEHost}</stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">/v1/availability?country=US&amp;location=${LatLon}&amp;skus=${PROMISE_LINES}</stringProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree/>
+        </hashTree>
+        <IfController guiclass="IfControllerPanel" testclass="IfController" testname="If Controller StoreList_SKUList" enabled="true">
+          <stringProp name="IfController.condition">${InvPerVar} &gt; 90</stringProp>
+          <boolProp name="IfController.evaluateAll">false</boolProp>
+        </IfController>
+        <hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Inv Availability From storelist and skulsit" enabled="true">
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+              <collectionProp name="Arguments.arguments"/>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">${APISGHost}</stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">/inventory/v1/availability?country=US&amp;store=${Store_LINES}&amp;skus=${PROMISE_LINES}</stringProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree/>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Content-Type</stringProp>
+                <stringProp name="Header.value">application/json</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Accept</stringProp>
+                <stringProp name="Header.value">application/json</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">x-access-token</stringProp>
+                <stringProp name="Header.value">${accessToken}</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Inv Availability From Coordinateslist and Skulist" enabled="false">
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+              <collectionProp name="Arguments.arguments"/>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">${InvGKEHost}</stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">/v1/availability?country=US&amp;location=${LatLon_LINES}&amp;skus=${PROMISE_LINES}</stringProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree/>
+        </hashTree>
+      </hashTree>
+      <ResultCollector guiclass="SummaryReport" testclass="ResultCollector" testname="Summary Report" enabled="true">
+        <boolProp name="ResultCollector.error_logging">false</boolProp>
+        <objProp>
+          <name>saveConfig</name>
+          <value class="SampleSaveConfiguration">
+            <time>true</time>
+            <latency>true</latency>
+            <timestamp>true</timestamp>
+            <success>true</success>
+            <label>true</label>
+            <code>true</code>
+            <message>true</message>
+            <threadName>true</threadName>
+            <dataType>true</dataType>
+            <encoding>false</encoding>
+            <assertions>true</assertions>
+            <subresults>true</subresults>
+            <responseData>false</responseData>
+            <samplerData>false</samplerData>
+            <xml>false</xml>
+            <fieldNames>true</fieldNames>
+            <responseHeaders>false</responseHeaders>
+            <requestHeaders>false</requestHeaders>
+            <responseDataOnError>false</responseDataOnError>
+            <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+            <assertionsResultsToSave>0</assertionsResultsToSave>
+            <bytes>true</bytes>
+            <sentBytes>true</sentBytes>
+            <threadCounts>true</threadCounts>
+            <idleTime>true</idleTime>
+            <connectTime>true</connectTime>
+          </value>
+        </objProp>
+        <objProp>
+          <name></name>
+          <value class="SampleSaveConfiguration">
+            <time>true</time>
+            <latency>true</latency>
+            <timestamp>true</timestamp>
+            <success>true</success>
+            <label>true</label>
+            <code>true</code>
+            <message>true</message>
+            <threadName>true</threadName>
+            <dataType>true</dataType>
+            <encoding>false</encoding>
+            <assertions>true</assertions>
+            <subresults>true</subresults>
+            <responseData>false</responseData>
+            <samplerData>false</samplerData>
+            <xml>false</xml>
+            <fieldNames>false</fieldNames>
+            <responseHeaders>false</responseHeaders>
+            <requestHeaders>false</requestHeaders>
+            <responseDataOnError>false</responseDataOnError>
+            <saveAssertionResultsFailureMessage>false</saveAssertionResultsFailureMessage>
+            <assertionsResultsToSave>0</assertionsResultsToSave>
+            <bytes>true</bytes>
+          </value>
+        </objProp>
+        <stringProp name="filename"></stringProp>
+      </ResultCollector>
+      <hashTree/>
+      <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
+        <boolProp name="ResultCollector.error_logging">true</boolProp>
+        <objProp>
+          <name>saveConfig</name>
+          <value class="SampleSaveConfiguration">
+            <time>true</time>
+            <latency>true</latency>
+            <timestamp>true</timestamp>
+            <success>true</success>
+            <label>true</label>
+            <code>true</code>
+            <message>true</message>
+            <threadName>true</threadName>
+            <dataType>true</dataType>
+            <encoding>false</encoding>
+            <assertions>true</assertions>
+            <subresults>true</subresults>
+            <responseData>false</responseData>
+            <samplerData>false</samplerData>
+            <xml>false</xml>
+            <fieldNames>true</fieldNames>
+            <responseHeaders>false</responseHeaders>
+            <requestHeaders>false</requestHeaders>
+            <responseDataOnError>false</responseDataOnError>
+            <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+            <assertionsResultsToSave>0</assertionsResultsToSave>
+            <bytes>true</bytes>
+            <sentBytes>true</sentBytes>
+            <threadCounts>true</threadCounts>
+            <idleTime>true</idleTime>
+            <connectTime>true</connectTime>
+          </value>
+        </objProp>
+        <objProp>
+          <name></name>
+          <value class="SampleSaveConfiguration">
+            <time>true</time>
+            <latency>true</latency>
+            <timestamp>true</timestamp>
+            <success>true</success>
+            <label>true</label>
+            <code>true</code>
+            <message>true</message>
+            <threadName>true</threadName>
+            <dataType>true</dataType>
+            <encoding>false</encoding>
+            <assertions>true</assertions>
+            <subresults>true</subresults>
+            <responseData>false</responseData>
+            <samplerData>false</samplerData>
+            <xml>false</xml>
+            <fieldNames>false</fieldNames>
+            <responseHeaders>false</responseHeaders>
+            <requestHeaders>false</requestHeaders>
+            <responseDataOnError>false</responseDataOnError>
+            <saveAssertionResultsFailureMessage>false</saveAssertionResultsFailureMessage>
+            <assertionsResultsToSave>0</assertionsResultsToSave>
+            <bytes>true</bytes>
+          </value>
+        </objProp>
+        <stringProp name="filename"></stringProp>
+      </ResultCollector>
+      <hashTree/>
+    </hashTree>
+  </hashTree>
+</jmeterTestPlan>
